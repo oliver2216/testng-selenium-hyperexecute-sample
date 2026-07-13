@@ -18,6 +18,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.Assert; 
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -147,6 +148,16 @@ public class Test4 {
 
         /* Once you are outside this code, the list would be empty */
     }
+
+
+    // Task 3: Intentional hard-failure test case (not flaky/random) to
+    // demonstrate HyperExecute's retryOnFailure behavior.
+    @Test(description = "Intentional hard failure for retry demonstration")
+    public void test4_intentional_failure() {
+        status = "failed";
+        Assert.fail("Intentional hard failure to demonstrate HyperExecute retryOnFailure behavior.");
+    }
+
 
     @AfterMethod
     public void tearDown() {

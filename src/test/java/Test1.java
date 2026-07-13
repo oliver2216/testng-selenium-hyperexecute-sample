@@ -36,6 +36,8 @@ public class Test1 {
     public static String username = System.getenv("LT_USERNAME");
     public static String access_key = System.getenv("LT_ACCESS_KEY");
 
+	public static String environment = System.getenv("ENVIRONMENT");
+
     ExtentSparkReporter spark = new ExtentSparkReporter("target/surefire-reports/html/extentReport.html");
     JsonFormatter json = new JsonFormatter("target/surefire-reports/json/Extent_Report.json");
     ExtentReports extent = new ExtentReports();
@@ -49,7 +51,7 @@ public class Test1 {
     public void testSetUp(String browser, String version, String platform, String resolution) throws Exception {
         String platformName = System.getenv("HYPEREXECUTE_PLATFORM") != null ? System.getenv("HYPEREXECUTE_PLATFORM")
                 : platform;
-
+		System.out.println("ENVIRONMENT variable value during test execution: " + environment);
         // LambdaTest specific options using W3C protocol (LT:Options)
         HashMap<String, Object> ltOptions = new HashMap<>();
         ltOptions.put("build", "[HyperExecute - 1] Demonstration of the TestNG Framework");
